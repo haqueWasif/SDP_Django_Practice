@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> This is home page </h1>
+
+    <h2> Languages length: {{ languages | length}} </h2>
+    
+    <ul>
+        {% for language in languages %}
+            <li>{{ language }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2> He will be {{ age | add:"5"}} years old after 5 years </h2>
+    
+    <h2> {{ occupation | addslashes }} </h2>
+
+    <h2> My name is {{ name | capfirst }} </h2>
+
+    <h2> {{ name | center:25}} </h2>
+
+    <h2> {{ occupation | cut:" " }} </h2>
+
+    <h2> Born in {{ birthday | date:"D d M Y" }}
+
+    <h2> Hobbies are {{ hobbies | default:"nothing" }} </h2>
+        
+    <h2> {{ friends | dictsort:"age"}} </h2>
+
+</body>
+
+</html>
