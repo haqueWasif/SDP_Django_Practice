@@ -1,24 +1,25 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% block content %}
 
-<table class="table">
-    <thead>
-      <tr class="fs-5">
-        <th scope="col">strMeal </th>
-        <th scope="col">strMealThumb </th>
-        <th scope="col">idMeal </th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for i in meals %}
-      <tr> 
-        <td>{{ i.strMeal }}</td>
-        <td> <img src="{{ i.strMealThumb }}" alt="" height="100"> </td>
-        <td>{{ i.idMeal }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+
+<div class="card-container d-flex flex-wrap justify-content-center gap-5">
+  
+{% for i in meals %}
+
+  <div class="card" style="width: 18rem">
+    <img src="{{i.strMealThumb}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <p class="card-text">
+        <h3 class="fs-5 fw-bold"> {{ i.strMeal }} </h3>
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+    </div>
+  </div>
+
+{% endfor %}
+
+</div>
 
 {% endblock content %}
