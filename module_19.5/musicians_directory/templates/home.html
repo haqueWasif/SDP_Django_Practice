@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h1>This is a home page</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            {% if request.user.is_authenticated %}
+              <th scope="col">Actions</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+            {% for album in data %}
+            <tr>
+                <th scope="row">{{album.id}}</th>
+                {% if request.user.is_authenticated %}
+                  <td><a class="text-decoration-none" href="{% url 'edit_musician' album.Musician.id %}">{{album.Musician.First_Name}} {{album.Musician.Last_Name}} </a></td>
+                {% else %}
+                  <td>{{album.Musician.First_Name}} {{album.Musician.Last_Name}}</td>
+                {% endif %}
+                <td>{{album.Musician.Email}}</td>
+                <td>{{album.Rating}}</td>
+                <td>{{album.Musician.Instrument_Type}}</td>
+                <td>{{album.Album_Name}}</td>
+                <td>{{album.Album_Release_Date}}</td>
+                {% if request.user.is_authenticated %}
+                <td><a href="{% url 'edit_album' album.id %}" class="btn btn-warning">Edit</a> <a href="{% url 'delete_album' album.id%}" class="btn btn-danger">Delete</a></td>
+                {% endif %}
+                
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

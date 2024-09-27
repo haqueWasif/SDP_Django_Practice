@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+{% for msg in messages %}
+<h3 class="text-{{msg.tags}}">{{msg}}</h3>
+{% endfor %}
+
+
+<h2>Profile Page</h2>
+<a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Your Profile</a>
+
+
+{% endblock %}
